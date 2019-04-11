@@ -6,27 +6,25 @@ class OperationFactory:
 
     def calculate(self):
         if self.operator == "+":
-            return OperationAdd(self.num1,self.num2,self.operator).add()
+            return OperationAdd(self.num1,self.num2).add()
         elif self.operator == "-":
-            return OperationSub(self.num1,self.num2,self.operator).sub()
+            return OperationSub(self.num1,self.num2).sub()
         elif self.operator == "*":
-            return OperationMul(self.num1,self.num2,self.operator).mul()
+            return OperationMul(self.num1,self.num2).mul()
         elif self.operator == "/":
-            return OperationDiv(self.num1,self.num2,self.operator).div()
+            return OperationDiv(self.num1,self.num2).div()
 
 class OperationAdd(OperationFactory):
-    def __init__(self,num1,num2,operator):
-        super().__init__(num1,num2,operator)
+    def __init__(self,num1,num2):
         self.num1 = num1
         self.num2 = num2
 
     def add(self):
-        self.result = self.num1 + self.num2
-        return self.result
+        return self.num1 + self.num2
+        # return self.result
 
 class OperationSub(OperationFactory):
-    def __init__(self,num1,num2,operator):
-        super().__init__(num1,num2,operator)
+    def __init__(self,num1,num2):
         self.num1 = num1
         self.num2 = num2
 
@@ -35,8 +33,7 @@ class OperationSub(OperationFactory):
         return self.result
 
 class OperationMul(OperationFactory):
-    def __init__(self,num1,num2,operator):
-        super().__init__(num1,num2,operator)
+    def __init__(self,num1,num2):
         self.num1 = num1
         self.num2 = num2
 
@@ -46,8 +43,7 @@ class OperationMul(OperationFactory):
 
 
 class OperationDiv(OperationFactory):
-    def __init__(self,num1,num2,operator):
-        super().__init__(num1,num2,operator)
+    def __init__(self,num1,num2,):
         self.num1 = num1
         self.num2 = num2
 
@@ -64,7 +60,7 @@ def Main():
     strOperate = input("請輸入運算符號:")
     strNumberB = input("請輸入數字B:")
     try:
-        strResult = Operation(int(strNumberA),int(strNumberB),strOperate).calculate()
+        strResult = OperationFactory(int(strNumberA),int(strNumberB),strOperate).calculate()
         print(strResult)
     except:
         print("輸入有誤")
